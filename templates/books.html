@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books With Alpine-Ajax</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.4/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>     
+     
+</head>
+<body>
+
+    <div x-data="{isbn: true, author: true, title: true, date: true, pages: true}">
+
+        <label for="isbn">ISBN:</label>
+        <input type="checkbox" id="isbn" name="isbn" x-model="isbn">
+        <label for="author">Author:</label>
+        <input type="checkbox" id="author" name="author" x-model="author">
+        <label for="title">Title:</label>
+        <input type="checkbox" id="title" name="title" x-model="title">
+        <label for="date">Date:</label>
+        <input type="checkbox" id="date" name="date" x-model="date">
+        <label for="pages">Pages:</label>
+        <input type="checkbox" id="pages" name="pages" x-model="pages">
+        <br><br>
+        
+        <table id="books">
+            {{ books | safe }}    
+        </table>
+        <br><br>
+
+        <form x-target="books" action="/books" method="post">
+            <label for="input-id">Author</label>
+            <input id="input-id" name="author" required>
+            <button>Submit</button>
+        </form>
+        
+</body>
+</html>
